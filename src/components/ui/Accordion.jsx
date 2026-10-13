@@ -1,21 +1,26 @@
 import { useState } from "react";
 
 export function Accordion({ items }) {
-  const [openItems, setOpenItems] = useState({});
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggle = (index) => {
-    setOpenItems((prev) => ({ ...prev, [index]: !prev[index] }));
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <div className="faq-list">
+    <div className="accordion-list">
       {items.map((item, index) => {
-        const open = !!openItems[index];
+        const open = openIndex === index;
         return (
           <div className="accordion-item" key={item.q}>
-            <button className="accordion-trigger" onClick={() => toggle(index)}>
-              <span>{item.q}</span>
-              <span className="accordion-mark">{open ? "−" : "+"}</span>
+            <button
+              type="button"
+              className="accordion-trigger"
+              onClick={() => toggle(index)}
+              aria-expanded={open}
+            >
+              <span className="accordion-title">{item.q}</span>
+              <span className={`accordion-mark${open ? " open" : ""}`}>+</span>
             </button>
             {open && (
               <div className="accordion-content">

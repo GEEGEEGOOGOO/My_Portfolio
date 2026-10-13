@@ -1,13 +1,29 @@
 import { useState } from "react";
 import { Accordion } from "./components/ui/Accordion";
-import { faqs, metrics, profile, projects, skills } from "./data/portfolio";
+import { faqs, metrics, profile, projects, stackGroups } from "./data/portfolio";
 import "./styles.css";
 
-const method = [
-  ["01", "Think", "Requirement breakdown, product logic, user-flow decisions, and success metrics."],
-  ["02", "Design", "Interface architecture, layout logic, component behavior, and interaction hierarchy."],
-  ["03", "Build", "Frontend, backend, APIs, database flows, AI pipeline wiring, and deployment."],
-  ["04", "Optimize", "Caching, CDN, request-flow refinements, lazy loading, and production issue diagnosis."]
+const processSteps = [
+  {
+    num: "01",
+    title: "Frame",
+    body: "Break the requirement down to the decision that actually matters, then agree on what a good outcome measures like before any code exists."
+  },
+  {
+    num: "02",
+    title: "Shape",
+    body: "Interface architecture, layout logic, component behaviour, and the hierarchy of what a user should notice first, second, and never."
+  },
+  {
+    num: "03",
+    title: "Build",
+    body: "Frontend, backend, APIs, database flow, AI pipeline wiring, and deployment — kept in one head so the seams stay honest."
+  },
+  {
+    num: "04",
+    title: "Tune",
+    body: "Caching, CDN, request-flow cleanup, lazy loading, and diagnosing the production issues nobody saw in staging."
+  }
 ];
 
 function Navbar() {
@@ -29,20 +45,20 @@ function Navbar() {
       <div
         className={`nav-spotlight${navSpot.active ? " active" : ""}`}
         style={{
-          background: `radial-gradient(280px circle at ${navSpot.x}px ${navSpot.y}px, rgba(139,92,246,.22), rgba(34,211,201,.1) 45%, transparent 70%)`
+          background: `radial-gradient(320px circle at ${navSpot.x}px ${navSpot.y}px, rgba(109,95,249,0.12), transparent 68%)`
         }}
       />
       <nav className="nav">
         <a href="#top" className="brand">
-          <span className="brand-badge">SK</span>
-          Shashank Kumar
+          <span className="brand-name">Shashank Kumar</span>
+          <span className="brand-title">Product Engineer</span>
         </a>
         <div className="nav-links">
-          <a href="#projects">Projects</a>
-          <a href="#work">Method</a>
-          <a href="#stack">Stack</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact" className="nav-contact">Contact</a>
+          <a href="#work">work</a>
+          <a href="#process">process</a>
+          <a href="#stack">stack</a>
+          <a href="#notes">notes</a>
+          <a href="#contact" className="nav-contact">contact</a>
         </div>
       </nav>
     </header>
@@ -51,118 +67,149 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="top" className="section hero">
-      <p className="kicker">AI-Augmented Product Engineer</p>
-      <h1>
-        Building systems that{" "}
-        <span className="gradient-text">think, speak,</span> connect dots, and scale.
-      </h1>
-      <p className="hero-subtitle">{profile.manifesto}</p>
-      <div className="hero-actions">
-        <a className="btn-primary" href="#projects">See Work →</a>
-        <a className="btn-outline" href="#contact">Contact</a>
+    <section id="top" className="hero-section">
+      <div className="hero-grid">
+        <div className="hero-left">
+          <h1>Product engineering for systems that have to work in production.</h1>
+        </div>
+        <div className="hero-right">
+          <p className="hero-manifesto">{profile.manifesto}</p>
+          <div className="hero-availability">
+            <span className="status-dot" />
+            <span>{profile.availabilityNote}</span>
+          </div>
+        </div>
       </div>
-      <div className="metric-grid">
-        {metrics.map((item) => (
-          <article className="metric-card" key={item.label}>
-            <strong>{item.value}</strong>
-            <span>{item.label}</span>
-            <p>{item.note}</p>
-          </article>
-        ))}
+      <div className="hero-actions">
+        <a href="#work" className="btn-primary">Selected work</a>
+        <a href="#contact" className="btn-outline">Get in touch</a>
       </div>
     </section>
   );
 }
 
-function Projects() {
+function MetricsStrip() {
   return (
-    <section id="projects" className="section">
-      <div className="work-label">WORK</div>
-      {projects.map((project) => (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noreferrer"
-          className="case-row"
-          key={project.name}
-        >
-          <div className="case-number">{project.number}</div>
-          <div>
-            <p className="case-category">{project.category}</p>
-            <h2 className="case-title">{project.title}</h2>
-            <div className="case-impact">{project.impact}</div>
+    <section className="metrics-section">
+      <div className="metrics-grid">
+        {metrics.map((item) => (
+          <div className="metric-item" key={item.label}>
+            <span className="metric-value">{item.value}</span>
+            <span className="metric-label">{item.label}</span>
+            <span className="metric-note">{item.note}</span>
           </div>
-          <div className="case-panel">
-            <p>{project.description}</p>
-            <div className="tag-row">
-              {project.stack.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-          </div>
-        </a>
-      ))}
+        ))}
+      </div>
     </section>
   );
 }
 
 function Work() {
   return (
-    <section id="work" className="section">
-      <p className="kicker">Method</p>
-      <div className="section-head">
-        <h2>From idea to shipped system.</h2>
+    <section id="work" className="section work-section">
+      <div className="section-header-row">
+        <h2>Selected work</h2>
+        <span className="meta-text">2023 — 2026 · {projects.length} projects</span>
       </div>
-      <div className="method-grid">
-        {method.map(([num, title, body]) => (
-          <article className="method-card" key={title}>
-            <span>{num}</span>
-            <h3>{title}</h3>
-            <p>{body}</p>
-          </article>
+      <div className="projects-list">
+        {projects.map((project) => (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="project-row"
+            key={project.title}
+          >
+            <div className="project-grid">
+              <div className="project-left">
+                <div className="project-category-row">
+                  <span className="project-number">{project.number}</span>
+                  <span className="project-category"> · {project.category}</span>
+                </div>
+                <h3>{project.title}</h3>
+                <p className="project-impact">{project.impact}</p>
+              </div>
+              <div className="project-right">
+                <p className="project-desc">{project.description}</p>
+                <div className="project-stack">
+                  {project.stack.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
         ))}
+        <div className="hairline-divider" />
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section id="process" className="section process-section">
+      <div className="two-column-layout">
+        <div className="column-left">
+          <h2>How the work happens</h2>
+          <p className="section-subcopy">
+            Same four moves on every project, whether it ships to eight thousand people or eight.
+          </p>
+        </div>
+        <div className="column-right">
+          <div className="process-rows">
+            {processSteps.map((step) => (
+              <div className="process-row" key={step.num}>
+                <div className="process-row-left">
+                  <span className="process-number">{step.num}</span>
+                  <span className="process-title">{step.title}</span>
+                </div>
+                <div className="process-row-right">
+                  <p>{step.body}</p>
+                </div>
+              </div>
+            ))}
+            <div className="hairline-divider" />
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
 function Stack() {
-  const skillsRow1 = [...skills, ...skills];
-  const skillsRow2 = [...skills].reverse().concat([...skills].reverse());
-
   return (
     <section id="stack" className="section stack-section">
-      <div className="stack-head">
-        <p className="kicker">Stack</p>
-        <div className="section-head">
-          <h2>AI product builder toolkit.</h2>
-        </div>
-      </div>
-      <div className="marquee-wrap">
-        <div className="marquee-row left">
-          {skillsRow1.map((skill, index) => (
-            <span key={`r1-${index}`} className="skill-pill">{skill}</span>
-          ))}
-        </div>
-        <div className="marquee-row right">
-          {skillsRow2.map((skill, index) => (
-            <span key={`r2-${index}`} className="skill-pill gradient">{skill}</span>
-          ))}
-        </div>
+      <h2>Tools I reach for</h2>
+      <div className="stack-grid">
+        {stackGroups.map((group) => (
+          <div className="stack-group" key={group.label}>
+            <div className="stack-group-header">
+              <span className="stack-group-label">{group.label}</span>
+            </div>
+            <ul className="stack-group-list">
+              {group.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
-function FAQ() {
+function Notes() {
   return (
-    <section id="faq" className="section faq-section">
-      <p className="kicker">FAQ</p>
-      <div className="section-head">
-        <h2>Recruiter notes.</h2>
+    <section id="notes" className="section notes-section">
+      <div className="two-column-layout">
+        <div className="column-left">
+          <h2>Notes for hiring teams</h2>
+        </div>
+        <div className="column-right">
+          <Accordion items={faqs} />
+        </div>
       </div>
-      <Accordion items={faqs} />
     </section>
   );
 }
@@ -170,15 +217,22 @@ function FAQ() {
 function Contact() {
   return (
     <section id="contact" className="section contact-section">
-      <p className="kicker">Contact</p>
-      <div className="section-head">
-        <h2>Let's build AI products with taste and speed.</h2>
-      </div>
-      <div className="contact-panel">
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        <a href={profile.github} target="_blank" rel="noreferrer" className="contact-link">GitHub</a>
-        <a href={profile.linkedin} target="_blank" rel="noreferrer" className="contact-link">LinkedIn</a>
-        <span className="contact-phone">{profile.phone}</span>
+      <div className="contact-grid">
+        <div className="contact-left">
+          <span className="contact-label">CONTACT</span>
+          <a href={`mailto:${profile.email}`} className="contact-email">
+            {profile.email}
+          </a>
+        </div>
+        <div className="contact-right">
+          <a href={profile.github} target="_blank" rel="noreferrer" className="contact-meta-link">
+            GitHub ↗
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="contact-meta-link">
+            LinkedIn ↗
+          </a>
+          <span className="contact-phone">{profile.phone}</span>
+        </div>
       </div>
     </section>
   );
@@ -187,19 +241,21 @@ function Contact() {
 export default function App() {
   return (
     <div className="page-shell">
-      <div className="orb orb-purple" />
-      <div className="orb orb-teal" />
       <Navbar />
       <main>
         <Hero />
-        <Projects />
+        <MetricsStrip />
         <Work />
+        <Process />
         <Stack />
-        <FAQ />
+        <Notes />
         <Contact />
       </main>
       <footer className="site-footer">
-        <span>© {new Date().getFullYear()} Shashank Kumar</span>
+        <div className="footer-content">
+          <span>© {new Date().getFullYear()} Shashank Kumar</span>
+          <span>Bengaluru, India</span>
+        </div>
       </footer>
     </div>
   );
