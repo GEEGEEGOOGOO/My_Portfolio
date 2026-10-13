@@ -325,3 +325,27 @@ svg{display:block;max-width:100%}
 
 /* Mobile menu labels stay on a single line. */
 @media(max-width:414px){.portfolio-menu nav a{font-size:clamp(21px,6.1vw,25px);gap:12px}.portfolio-menu nav a>span:nth-child(2){white-space:nowrap}}
+
+/* Personal portfolio: name first, compact supporting motion, authentic project evidence. */
+.hero-copy h1{font-size:clamp(75px,9.3vw,140px);letter-spacing:-.045em}
+.hero-intro{max-width:530px;font-size:18px}
+.hero-stickers-container{top:260px;width:31%;height:360px}
+.floating-sticker-wrapper{width:clamp(140px,13vw,185px)}
+.seal-yellow{width:clamp(155px,14vw,205px)}
+.floating-sticker-wrapper .project-visual{height:95px}
+.sticker-pos-graph{top:240px}
+.hero-seal-caption{font-size:10px}
+.project-screenshot{margin:26px 0 20px;width:100%}
+.project-screenshot>a{display:block;border-radius:8px;overflow:hidden;transition:transform .25s var(--ease)}
+.project-screenshot img{display:block;width:100%;height:auto;background:var(--c-offwhite)}
+.project-screenshot>a:hover{transform:scale(1.015)}
+.project-screenshot figcaption,.diagram-caption{display:block;font:11px/1.5 var(--font-sans);margin-top:12px}
+.project-frame:has(.project-screenshot){border-radius:8px 8px 36px 8px}
+.project-frame:has(.project-screenshot) .project-frame-caption{font-size:20px}
+.project-green .project-screenshot{margin:65px 0}
+.contact-huge-title{font-size:clamp(80px,13vw,175px)}
+@media(max-width:1100px){.hero-copy h1{font-size:9.8vw}.hero-stickers-container{width:31%}.floating-sticker-wrapper{width:145px}.seal-yellow{width:160px}.sticker-pos-voice{top:155px}.sticker-pos-graph{top:290px}}
+@media(max-width:768px){.hero-copy h1{font-size:15vw}.hero-intro{font-size:16px}.hero-stickers-container{top:auto;left:auto;right:auto;width:100%;height:300px;margin-top:45px}.floating-sticker-wrapper{width:145px}.seal-yellow{width:160px}.sticker-pos-systems{left:5%;top:40px}.sticker-pos-voice{right:5%;top:75px}.sticker-pos-graph{left:35%;top:170px}.project-green .project-screenshot{margin:40px 0}.contact-huge-title{font-size:clamp(80px,17vw,130px)}}
+@media(max-width:414px){.hero-copy h1{font-size:14.5vw}.hero-intro{font-size:15px}.hero-stickers-container{height:300px}.floating-sticker-wrapper{width:125px}.seal-yellow{width:140px}.floating-sticker-wrapper .project-visual{height:75px}.sticker-pos-systems{left:0;top:40px}.sticker-pos-voice{right:0;top:85px}.sticker-pos-graph{left:30%;top:180px}.hero-seal-caption{font-size:8px}.contact-huge-title{font-size:24vw}.project-frame:has(.project-screenshot) .project-frame-caption{font-size:16px}}
+[data-motion=off] .project-screenshot>a:hover{transform:none}
+@media(prefers-reduced-motion:reduce){.project-screenshot>a:hover{transform:none}}

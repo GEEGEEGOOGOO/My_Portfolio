@@ -6,7 +6,7 @@ export const profile = {
   github: "https://github.com/GEEGEEGOOGOO",
   linkedin: "https://linkedin.com/in/shashank1810",
   location: "Bengaluru, India",
-  manifesto: "I build the product, the interface, and the infrastructure underneath it — then stay on to find out what breaks at scale.",
+  manifesto: "I build interfaces, backend services, and AI workflows. My work includes SAFAR, a student platform serving 35,000+ registered users.",
   availabilityNote: "Open to product engineering roles"
 };
 
@@ -19,6 +19,7 @@ export const metrics = [
 
 export const projects = [
   {
+    image: { src: "/images/safar.png", alt: "SAFAR student platform homepage with study tools and dashboard navigation", caption: "SAFAR, the student platform I work on", width: 1440, height: 960 },
     number: "01",
     category: "Production Platform",
     title: "Scaling a student productivity system to 35K users.",
@@ -29,6 +30,7 @@ export const projects = [
     highlight: "Real-time traffic scaling & 64% → 18% CPU reduction"
   },
   {
+    image: { src: "/images/voice-plateau.png", alt: "Voice Plateau agent dashboard showing three configured agents, active sessions, and API status", caption: "Manage agents, sessions, and provider connections", width: 1024, height: 485 },
     number: "02",
     category: "Voice AI Platform",
     title: "A realtime voice agent pipeline with visible latency budgets.",
@@ -39,6 +41,7 @@ export const projects = [
     highlight: "Sub-second voice turn latency & audio chunk stream"
   },
   {
+    image: { src: "/images/graph-research.png", alt: "Graph research assistant terminal showing a RAG query and the retrieved response", caption: "A real query and retrieval response from the research tool", width: 1513, height: 304 },
     number: "03",
     category: "GraphRAG / Knowledge AI",
     title: "Turning scattered documents into a traversable graph brain.",
@@ -64,22 +67,22 @@ export const processSteps = [
   {
     num: "01",
     title: "Think & Frame",
-    body: "Break the requirement down to the decision that actually matters, then agree on what a good outcome measures like before any code exists."
+    body: "I start by understanding the problem, the people using the product, and what a useful outcome looks like."
   },
   {
     num: "02",
     title: "Shape & Architect",
-    body: "Interface architecture, layout logic, component behaviour, and the hierarchy of what a user should notice first, second, and never."
+    body: "I plan the interface, data flow, and service boundaries before committing to an implementation."
   },
   {
     num: "03",
     title: "Build & Integrate",
-    body: "Frontend, backend, APIs, database flow, AI pipeline wiring, and deployment — kept in one head so the seams stay honest."
+    body: "I build the frontend and backend, connect the AI workflows, and handle deployment."
   },
   {
     num: "04",
     title: "Tune & Scale",
-    body: "Caching, CDN, request-flow cleanup, lazy loading, and diagnosing the production issues nobody saw in staging."
+    body: "I look at production behaviour, investigate slow requests, and improve caching, queries, and resource use."
   }
 ];
 
@@ -137,7 +140,7 @@ export const stackGroups = [
 export const faqs = [
   {
     q: "What kind of engineer is this?",
-    a: "An AI-augmented product engineer: I own the whole line — product logic, interface decisions, backend flow, AI orchestration, and the deploy. Most useful on fast-moving teams where one person has to hold the thread end-to-end."
+    a: "I work across product decisions, interfaces, backend services, AI workflows, and deployment. I am interested in teams where I can take a product from an idea to production."
   },
   {
     q: "What is the strongest proof point?",
@@ -145,7 +148,7 @@ export const faqs = [
   },
   {
     q: "How do you actually use AI in the work?",
-    a: "As reliable infrastructure, not decorative gimmicks. Retrieval pipelines, knowledge graphs, realtime voice loops, and vision routing — built with explicit fallbacks and error boundaries, because model output is a network dependency like any other."
+    a: "As reliable infrastructure, not decorative gimmicks. I build retrieval pipelines, knowledge graphs, realtime voice workflows, and vision tools with fallbacks and clear error handling."
   },
   {
     q: "What roles are the right fit?",

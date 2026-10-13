@@ -83,21 +83,21 @@ function Hero() {
   const sealsY = useTransform(progress, [0,1], [0,-80]);
   const railX = useTransform(progress, [0,1], [0,-200]);
   return <section ref={ref} id="top" className="s-hero-stickers">
-    <div className="hero-topline"><span>INDEPENDENT MIND. END-TO-END BUILDER.</span><span>BENGALURU / INDIA</span></div>
+    <div className="hero-topline"><span>FULL-STACK DEVELOPMENT / AI APPLICATIONS</span><span>BENGALURU / INDIA</span></div>
     <motion.div className="hero-copy" style={enabled ? { y } : {}}>
-      <p className="hero-eyebrow">Shashank Kumar — Product engineer</p>
-      <h1><span className="hero-title-line">MAKE IT</span><span className="hero-title-line hero-last-line">WORK<span className="hero-period">.</span><span className="hero-annotation">AND MAKE<br/>IT MATTER.</span></span></h1>
-      <p className="hero-intro">From the first idea to the last millisecond.<br/>I build AI products that hold up in the real world.</p>
-      <div className="hero-actions"><CapsuleButton variant="green-eye" circleColor="pink" icon={<EyeIcon/>} label="See the work" href="#work" size="large"/><a href="#manifesto" className="text-link">Meet the engineer ↗</a></div>
+      <p className="hero-eyebrow">PRODUCT ENGINEER</p>
+      <h1><span className="hero-title-line">SHASHANK</span><span className="hero-title-line hero-last-line">KUMAR<span className="hero-period">.</span></span></h1>
+      <p className="hero-intro">I build full-stack applications and AI tools.<br/>Based in Bengaluru. Interested in useful products and the engineering behind them.</p>
+      <div className="hero-actions"><CapsuleButton variant="green-eye" circleColor="pink" icon={<EyeIcon/>} label="See the work" href="#work" size="large"/><a href="#manifesto" className="text-link">More about me ↗</a></div>
     </motion.div>
     <motion.div className="hero-stickers-container" style={enabled ? { y: sealsY } : {}}>
-      <span className="hero-seal-caption">LESS TALK. MORE PROOF.</span>
+      <span className="hero-seal-caption">A FEW THINGS I'VE BUILT</span>
       <FloatingSticker type="systems" className="sticker-pos-systems"/>
       <FloatingSticker type="voice" className="sticker-pos-voice"/>
       <FloatingSticker type="graph" className="sticker-pos-graph"/>
     </motion.div>
-    <div className="hero-bottomline"><span><i/> OPEN TO PRODUCT ENGINEERING ROLES</span><a href="#work" aria-label="Scroll to selected work"><SketchArrowDown/></a><span>SCROLL TO GET INTO IT</span></div>
-    <div className="hero-rail" aria-hidden="true"><motion.div style={enabled ? {x: railX} : {}}>IDEA → INTERFACE → INFRASTRUCTURE → IMPACT → IDEA → INTERFACE → INFRASTRUCTURE</motion.div></div>
+    <div className="hero-bottomline"><span><i/> OPEN TO PRODUCT ENGINEERING ROLES</span><a href="#work" aria-label="Scroll to selected work"><SketchArrowDown/></a><span>EXPLORE MY PROJECTS</span></div>
+    <div className="hero-rail" aria-hidden="true"><motion.div style={enabled ? {x: railX} : {}}>FULL-STACK DEVELOPMENT · VOICE AI · KNOWLEDGE GRAPHS · FULL-STACK DEVELOPMENT · VOICE AI</motion.div></div>
   </section>;
 }
 
@@ -118,8 +118,8 @@ function ProjectCard({ project, index }) {
       </Reveal>
     </div>
     <motion.div className="project-frame" style={enabled ? { rotate: rotation, y } : {}}>
-      <div className="project-frame-top"><span>FIELD NOTES / {project.number}</span><span aria-hidden="true">✳</span></div>
-      <ProjectVisual type={identity.type}/>
+      <div className="project-frame-top"><span>PROJECT / {project.number}</span><span aria-hidden="true">✳</span></div>
+      {project.image ? <figure className="project-screenshot"><a href={project.image.src} target="_blank" rel="noreferrer" aria-label={`Open ${identity.name} screenshot`}><img src={project.image.src} alt={project.image.alt} loading="lazy" width={project.image.width} height={project.image.height}/></a><figcaption>{project.image.caption}</figcaption></figure> : <><ProjectVisual type={identity.type}/><span className="diagram-caption">Illustration of the project's architecture</span></>}
       <span className="project-frame-caption">{identity.label}</span>
       <div className="project-impact-bubble"><span>{project.impact}</span></div>
     </motion.div>
@@ -160,25 +160,25 @@ export default function App() {
         <Hero/>
         <section id="manifesto" className="s-white-editorial">
           <div className="white-editorial-container">
-            <Reveal className="white-editorial-left"><span className="section-eyebrow">01 / THE ENGINEER</span><h2 className="white-editorial-heading">GOOD IDEAS.<br/>REAL <span className="highlight-underline">SYSTEMS.</span></h2></Reveal>
-            <Reveal className="white-editorial-right" delay={.1}><p className="white-editorial-text">{profile.manifesto}</p><p className="editorial-small">Product thinking. Interface craft. Infrastructure that holds. I like owning the thread all the way through.</p><div className="white-editorial-buttons"><CapsuleButton variant="black" href="#work" label="Selected projects" icon={<EyeIcon/>} circleColor="pink"/><a className="text-link" href={`mailto:${profile.email}`}>Write to me ↗</a></div><HandDrawnArrowOutline className="editorial-arrow"/></Reveal>
+            <Reveal className="white-editorial-left"><span className="section-eyebrow">01 / ABOUT ME</span><h2 className="white-editorial-heading">A LITTLE<br/>ABOUT <span className="highlight-underline">ME.</span></h2></Reveal>
+            <Reveal className="white-editorial-right" delay={.1}><p className="white-editorial-text">{profile.manifesto}</p><p className="editorial-small">I'm interested in voice interfaces, knowledge graphs, and making applications faster as they grow. I'm looking for a product engineering, full-stack, or AI role where I can keep building across the stack.</p><div className="white-editorial-buttons"><CapsuleButton variant="black" href="#work" label="Selected projects" icon={<EyeIcon/>} circleColor="pink"/><a className="text-link" href={`mailto:${profile.email}`}>Write to me ↗</a></div><HandDrawnArrowOutline className="editorial-arrow"/></Reveal>
           </div>
           <div className="proof-strip">{metrics.map((item,i)=><Reveal className="proof-item" key={item.label} delay={i*.06}><strong>{item.value}</strong><span>{item.label}</span><small>{item.note}</small></Reveal>)}</div>
         </section>
         <section id="work" className="s-projects-section">
-          <div className="projects-container"><Reveal className="section-title-badge-row"><div><span className="section-eyebrow">02 / SELECTED WORK</span><h2 className="section-huge-title">OUT IN THE<br/><span className="outline-type">REAL WORLD.</span></h2></div><p className="section-side-note">Four builds. Different problems.<br/>The same end-to-end ownership.</p></Reveal><div className="projects-grid">{projects.map((project,index)=><ProjectCard key={project.number} project={project} index={index}/>)}</div></div>
+          <div className="projects-container"><Reveal className="section-title-badge-row"><div><span className="section-eyebrow">02 / SELECTED WORK</span><h2 className="section-huge-title">SELECTED<br/><span className="outline-type">PROJECTS.</span></h2></div><p className="section-side-note">A student platform, a voice application,<br/>a research tool, and a desktop assistant.</p></Reveal><div className="projects-grid">{projects.map((project,index)=><ProjectCard key={project.number} project={project} index={index}/>)}</div></div>
         </section>
         <section id="process" className="s-method-section">
-          <div className="method-container"><Reveal className="section-title-badge-row"><div><span className="section-eyebrow">03 / THE METHOD</span><h2 className="section-huge-title">THINK. BUILD.<br/>BREAK. <span className="highlight-underline">BETTER.</span></h2></div><span className="method-loop" aria-hidden="true">↻</span></Reveal>
+          <div className="method-container"><Reveal className="section-title-badge-row"><div><span className="section-eyebrow">03 / THE METHOD</span><h2 className="section-huge-title">HOW I<br/><span className="highlight-underline">WORK.</span></h2></div><span className="method-loop" aria-hidden="true">↻</span></Reveal>
           <div className="method-cards-grid">{processSteps.map((step,i)=><Reveal className="method-step-card" key={step.num} delay={i*.09}><span className="method-step-num">{step.num}<span aria-hidden="true">↗</span></span><h3 className="method-step-title">{step.title}</h3><p className="method-step-body">{step.body}</p></Reveal>)}</div></div>
         </section>
         <section id="stack" className="s-stack-marquee-section">
-          <Reveal className="stack-heading"><span className="section-eyebrow">04 / THE TOOLKIT</span><h2 className="section-huge-title">RIGHT TOOL.<br/>REAL PURPOSE.</h2><p>Tools change. Knowing what to build with them is the point.</p></Reveal>
+          <Reveal className="stack-heading"><span className="section-eyebrow">04 / THE TOOLKIT</span><h2 className="section-huge-title">WHAT I<br/>BUILD WITH.</h2><p>The tools I use for interfaces, services, AI workflows, and deployment.</p></Reveal>
           <div className="stack-rails"><StackRail items={skillsMarqueeRow1}/><StackRail items={skillsMarqueeRow2} reverse/></div>
           <div className="stack-groups">{stackGroups.map(group=><div key={group.label}><h3>{group.label}</h3><ul>{group.items.map(item=><li key={item}>{item}</li>)}</ul></div>)}</div>
         </section>
         <section id="contact" className="s-contact-section">
-          <Reveal className="contact-card-box"><div className="contact-topline"><span className="section-eyebrow">05 / YOUR NEXT BUILD?</span><span className="contact-star" aria-hidden="true">✳</span></div><h2 className="contact-huge-title">LET'S MAKE<br/>SOMETHING<br/><span>THAT MATTERS.</span></h2><div className="contact-bottom"><p className="contact-sub-text">Open to product engineering, full-stack, and AI roles.<br/>Bengaluru or remote. A good problem is a good start.</p><CapsuleButton variant="green" circleColor="yellow" icon={<ChatBubbleIcon/>} label="Start a conversation" href={`mailto:${profile.email}`} size="large"/></div><div className="contact-action-row"><a href={`mailto:${profile.email}`}>{profile.email} ↗</a><a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></div><footer className="contact-footer-bar"><span>© {new Date().getFullYear()} Shashank Kumar</span><span>BUILT WITH INTENT.</span><a href="#top">Back to top ↑</a></footer></Reveal>
+          <Reveal className="contact-card-box"><div className="contact-topline"><span className="section-eyebrow">05 / GET IN TOUCH</span><span className="contact-star" aria-hidden="true">✳</span></div><h2 className="contact-huge-title">LET'S<br/><span>TALK.</span></h2><div className="contact-bottom"><p className="contact-sub-text">Looking for a product engineer, full-stack developer, or AI engineer?<br/>I'm open to roles in Bengaluru or remote. Send me a note.</p><CapsuleButton variant="green" circleColor="yellow" icon={<ChatBubbleIcon/>} label="Start a conversation" href={`mailto:${profile.email}`} size="large"/></div><div className="contact-action-row"><a href={`mailto:${profile.email}`}>{profile.email} ↗</a><a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></div><footer className="contact-footer-bar"><span>© {new Date().getFullYear()} Shashank Kumar</span><span>BENGALURU, INDIA</span><a href="#top">Back to top ↑</a></footer></Reveal>
         </section>
       </main>
     </div>
