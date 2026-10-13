@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-13",
+  "framework": "React + Vite",
+  "palette": "existing charcoal, pink, green, yellow, salmon",
+  "fonts": [
+    "Plaak",
+    "Circular Std",
+    "Sporting Grotesque",
+    "Arial body"
+  ],
+  "motion": "Framer Motion + original SVG",
+  "audience": "hiring teams",
+  "purpose": "project evidence and contact"
+}

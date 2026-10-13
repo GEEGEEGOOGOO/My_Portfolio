@@ -15,6 +15,7 @@
     "@vitejs/plugin-react": "latest",
     "express": "latest",
     "framer-motion": "latest",
+    "lottie-react": "^3.1.2",
     "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",

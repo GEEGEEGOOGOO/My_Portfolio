@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Accordion({ items }) {
   const [openIndex, setOpenIndex] = useState(0);
@@ -12,7 +13,7 @@ export function Accordion({ items }) {
       {items.map((item, index) => {
         const open = openIndex === index;
         return (
-          <div className="accordion-item" key={item.q}>
+          <div className={`accordion-item${open ? " is-open" : ""}`} key={item.q}>
             <button
               type="button"
               className="accordion-trigger"
@@ -20,13 +21,23 @@ export function Accordion({ items }) {
               aria-expanded={open}
             >
               <span className="accordion-title">{item.q}</span>
-              <span className={`accordion-mark${open ? " open" : ""}`}>+</span>
+              <span className={`accordion-mark${open ? " open" : ""}`}>
+                {open ? "−" : "+"}
+              </span>
             </button>
-            {open && (
-              <div className="accordion-content">
-                <p>{item.a}</p>
-              </div>
-            )}
+            <AnimatePresence initial={false}>
+              {open && (
+                <motion.div
+                  className="accordion-content"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <p>{item.a}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         );
       })}
